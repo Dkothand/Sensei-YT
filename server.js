@@ -5,6 +5,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 
+const techniquesController = require('./controllers/techniques_controller.js');
 
 // PORT
 // Allow use of Heroku's port or your own local port, depending on the environment
@@ -36,6 +37,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 //use method override
 app.use(methodOverride('_method'));
+
+
+// CONTROLLERS
+app.use('/techniques', techniquesController);
 
 
 // ROUTES

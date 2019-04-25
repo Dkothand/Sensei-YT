@@ -8,3 +8,5 @@ const techniqueSchema = new Schema({
 });
 
 const Technique = mongoose.model('Technique', techniqueSchema);
+
+module.exports = Technique;
