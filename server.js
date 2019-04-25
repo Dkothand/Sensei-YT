@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 // DATABASE
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+ 'library';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'library';
 
 
 // CONNECT TO MONGO
@@ -43,6 +43,7 @@ app.use(methodOverride('_method'));
 app.get('/' , (req, res) => {
   res.send('Hello World!');
 });
+
 
 // LISTENER
 app.listen(PORT, () => console.log( 'Listening on port:', PORT));
