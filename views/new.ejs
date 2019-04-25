@@ -4,6 +4,22 @@
     <% include partials/head.ejs %>
 </head>
 <body>
-    <h1>New Page</h1>
+    <div class="container">
+        <h1>New Page</h1>
+
+        <form action="/techniques" method="POST">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+
+            <label for="link">Embed Link</label>
+            <input type="text" name="link" id="link">
+
+            <label for="notes">Notes</label>
+            <textarea name="notes" id="notes" cols="30" rows="30">Default Notes</textarea>
+
+            <!-- Submit -->
+            <input type="submit" value="Create New Technique">
+        </form>
+    </div>
 </body>
 </html>
