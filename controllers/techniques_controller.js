@@ -21,6 +21,17 @@ techniques.get('/new', (req, res) => {
 });
 
 // SHOW
+techniques.get('/:id', (req, res) => {
+    Technique.findById(req.params.id, (err, foundTechnique) => {
+        if (err) {
+            console.log(err)
+        }
+        res.render('show.ejs', {
+            move: foundTechnique
+        })
+    })
+});
+
 // CREATE
 techniques.post('/', (req, res) => {
     Technique.create(req.body, (err, createdTechnique) => {

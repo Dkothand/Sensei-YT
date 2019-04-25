@@ -9,7 +9,7 @@
 
     <% moves.forEach((move) => { %>
         <div>
-            <h4><%= move.title %></h4>
+            <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
             <p><%= move.notes %></p>
         </div>
     <% }) %>
