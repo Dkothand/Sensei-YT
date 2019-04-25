@@ -67,4 +67,14 @@ techniques.put('/:id', (req, res) => {
 });
 
 // DELETE
+techniques.delete('/:id', (req, res) => {
+    Technique.findByIdAndRemove(req.params.id, (err, removedTechnique) => {
+        if (err) {
+            console.log(err)
+        }
+        res.redirect('/');
+    })
+})
+
+
 module.exports = techniques;

@@ -19,6 +19,9 @@
         <!-- Submit -->
         <input type="submit" value="Edit Technique">
     </form>
+    <form action="/techniques/<%= move.id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Technique"/>
+    </form>
     <a href="/techniques">Back to Index</a>
 </body>
 </html>
