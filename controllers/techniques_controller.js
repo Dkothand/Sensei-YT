@@ -73,8 +73,8 @@ techniques.delete('/:id', (req, res) => {
             console.log(err)
         }
         res.redirect('/');
-    })
-})
+    });
+});
 
 
 module.exports = techniques;
