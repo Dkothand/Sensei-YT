@@ -32,6 +32,18 @@ techniques.get('/:id', (req, res) => {
     })
 });
 
+// EDIT
+techniques.get('/:id/edit', (req, res) => {
+    Technique.findById(req.params.id, (err, foundTechnique) => {
+        if (err) {
+            console.log(err)
+        }
+        res.render('edit.ejs', {
+            move: foundTechnique
+        })
+    })
+});
+
 // CREATE
 techniques.post('/', (req, res) => {
     Technique.create(req.body, (err, createdTechnique) => {
@@ -42,7 +54,17 @@ techniques.post('/', (req, res) => {
         res.redirect('/techniques')
     });
 });
-// EDIT
+
 // UPDATE
+techniques.put('/:id', (req, res) => {
+    Technique.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTechnique) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log(updatedTechnique);
+        res.redirect('/techniques/' + req.params.id);
+    })
+});
+
 // DELETE
 module.exports = techniques;

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+    <h1>Edit <%= move.title %></h1>
+
+    <form action="/techniques/<%= move.id%>?_method=PUT" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%= move.title %>">
+
+        <!-- <label for="link">Embed Link</label>
+        <input type="text" name="link" id="link"> -->
+
+        <label for="notes">Notes</label>
+        <textarea name="notes" id="notes" cols="30" rows="30"><%= move.notes %></textarea>
+
+        <!-- Submit -->
+        <input type="submit" value="Edit Technique">
+    </form>
+    <a href="/techniques">Back to Index</a>
+</body>
+</html>
