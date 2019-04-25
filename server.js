@@ -45,6 +45,8 @@ app.use('/techniques', techniquesController);
 
 // ROUTES
 //localhost:3000
+// redirects to /techniques for index page
+// create into landing/home page down the road
 app.get('/' , (req, res) => {
   res.redirect('/techniques');
 });

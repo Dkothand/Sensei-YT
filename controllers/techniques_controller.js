@@ -5,8 +5,15 @@ const Technique = require('../models/technique.js');
 
 // INDEX
 techniques.get('/', (req, res) => {
-    res.render('index.ejs');
-})
+    Technique.find({}, (err, foundTechniques) => {
+        if (err) {
+            console.log(err)
+        }
+        res.render('index.ejs', {
+            moves: foundTechniques
+        });
+    });
+});
 
 // NEW
 techniques.get('/new', (req, res) => {
@@ -16,8 +23,6 @@ techniques.get('/new', (req, res) => {
 // SHOW
 // CREATE
 techniques.post('/', (req, res) => {
-    // console.log(req.body)
-    // res.send(req.body);
     Technique.create(req.body, (err, createdTechnique) => {
         if (err) {
             console.log(err)

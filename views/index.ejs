@@ -6,6 +6,13 @@
 <body>
     <h1>Index</h1>
     <a href="/techniques/new">New Technique</a>
+
+    <% moves.forEach((move) => { %>
+        <div>
+            <h4><%= move.title %></h4>
+            <p><%= move.notes %></p>
+        </div>
+    <% }) %>
     
 </body>
 </html>
