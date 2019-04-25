@@ -46,7 +46,7 @@ app.use('/techniques', techniquesController);
 // ROUTES
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.redirect('/techniques');
 });
 
 
