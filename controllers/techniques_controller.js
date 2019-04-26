@@ -2,7 +2,7 @@ const express = require('express');
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
-const embedLink = 'https://www.youtube.com/embed/';
+const embedLinkPrefix = 'https://www.youtube.com/embed/';
 
 
 // INDEX
@@ -29,9 +29,11 @@ techniques.get('/:id', (req, res) => {
             console.log(err)
         }
         // Create embed link from db link
-        foundTechnique.link = embedLink + foundTechnique.link;
+        const embedLinkId = foundTechnique.link.split('=')[1];
+        const embedLink = embedLinkPrefix + embedLinkId
         res.render('show.ejs', {
-            move: foundTechnique
+            move: foundTechnique,
+            video: embedLink
         })
     })
 });
@@ -50,8 +52,6 @@ techniques.get('/:id/edit', (req, res) => {
 
 // CREATE
 techniques.post('/', (req, res) => {
-    // get just embed id from url
-    req.body.link = req.body.link.split('=')[1];
     Technique.create(req.body, (err, createdTechnique) => {
         if (err) {
             console.log(err)
