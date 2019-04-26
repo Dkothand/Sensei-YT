@@ -7,6 +7,10 @@ const db = mongoose.connection;
 
 const techniquesController = require('./controllers/techniques_controller.js');
 
+const usersController = require('./controllers/users_controller.js');
+
+const sessionsController = require('./controllers/sessions_controller.js');
+
 // PORT
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
@@ -41,6 +45,8 @@ app.use(methodOverride('_method'));
 
 // CONTROLLERS
 app.use('/techniques', techniquesController);
+app.use('/users', usersController);
+app.use('/sessions', sessionsController);
 
 
 // ROUTES

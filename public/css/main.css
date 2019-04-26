@@ -13,7 +13,7 @@ body {
 }
 
 /*=============== Index.ejs =================*/
-.title, .nav-brand {
+.title, .brand-logo {
     font-family: 'Yatra One', cursive;
 }
 
