@@ -3,6 +3,12 @@
     <a href="#" class="brand-logo left">Sensei YT</a>
 
     <% if (currentUser) { %>
+        <!-- Logout Button -->
+        <li class="right">
+            <form action="/sessions?_method=DELETE" method="POST">
+                <input type="submit" value="Logout"/>
+            </form>
+        </li>
         <li class="right">Welcome <%= currentUser.username%>!</li>
     <% } else { %>
         <li class="right">
