@@ -2,6 +2,8 @@ const express = require('express');
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
+const embedLink = 'https://www.youtube.com/embed/';
+
 
 // INDEX
 techniques.get('/', (req, res) => {
@@ -26,6 +28,8 @@ techniques.get('/:id', (req, res) => {
         if (err) {
             console.log(err)
         }
+        // Create embed link from db link
+        foundTechnique.link = embedLink + foundTechnique.link;
         res.render('show.ejs', {
             move: foundTechnique
         })
@@ -46,6 +50,8 @@ techniques.get('/:id/edit', (req, res) => {
 
 // CREATE
 techniques.post('/', (req, res) => {
+    // get just embed id from url
+    req.body.link = req.body.link.split('=')[1];
     Technique.create(req.body, (err, createdTechnique) => {
         if (err) {
             console.log(err)

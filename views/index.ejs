@@ -4,9 +4,11 @@
     <% include partials/head.ejs %>
 </head>
 <body>
+    <!-- Header up here -->
     <h1>Index</h1>
-    <a href="/techniques/new">New Technique</a>
+    <a href="/techniques/new"><button>New Technique</button></a>
 
+    <!-- This will be in main -->
     <% moves.forEach((move) => { %>
         <div>
             <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
