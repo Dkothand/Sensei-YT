@@ -17,6 +17,7 @@ sessions.post('/', (req, res) => {
             res.send('<a href="/sessions/new">Invalid credentials</a>');
         } else if (req.body.password === foundUser.password) {
             console.log(foundUser)
+            req.session.currentUser = foundUser;
             res.redirect('/');
         } else {
             res.send('<a href="/sessions/new">Invalid credentials</a>');

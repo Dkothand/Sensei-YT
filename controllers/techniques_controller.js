@@ -12,7 +12,8 @@ techniques.get('/', (req, res) => {
             console.log(err)
         }
         res.render('index.ejs', {
-            moves: foundTechniques
+            moves: foundTechniques,
+            currentUser: req.session.currentUser
         });
     });
 });

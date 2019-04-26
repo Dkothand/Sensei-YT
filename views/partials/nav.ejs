@@ -1,12 +1,17 @@
 <!-- views/partials/nav.ejs -->
 <div class="nav-wrapper">
     <a href="#" class="brand-logo left">Sensei YT</a>
-    <li class="right">
-        <!-- controllers/users_controller.js new route -->
-        <a href="/users/new">Sign Up</a>
-    </li>
-    <li class="right">
-        <!-- controllers/users_controller.js new route -->
-        <a href="/sessions/new">Log In</a>
-    </li>
+
+    <% if (currentUser) { %>
+        <li class="right">Welcome <%= currentUser.username%>!</li>
+    <% } else { %>
+        <li class="right">
+            <!-- controllers/users_controller.js new route -->
+            <a href="/users/new">Sign Up</a>
+        </li>
+        <li class="right">
+            <!-- controllers/users_controller.js new route -->
+            <a href="/sessions/new">Log In</a>
+        </li>
+    <% } %>
 </div>

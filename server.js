@@ -4,12 +4,16 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const session = require('express-session');
 
 const techniquesController = require('./controllers/techniques_controller.js');
-
 const usersController = require('./controllers/users_controller.js');
-
 const sessionsController = require('./controllers/sessions_controller.js');
+/*
+get package dotenv for .env file
+need to get require('dotenv').config()
+*/
+
 
 // PORT
 // Allow use of Heroku's port or your own local port, depending on the environment
@@ -41,6 +45,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 //use method override
 app.use(methodOverride('_method'));
+
+// NEED TO MOVE THIS TO ENV FILE
+app.use(session({
+  secret: "dogjumphorse",
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 // CONTROLLERS
