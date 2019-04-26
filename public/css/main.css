@@ -9,8 +9,10 @@ font-family: 'Ubuntu', sans-serif; */
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    background-color: #ffffd7;
 }
 
+/*=============== Index.ejs =================*/
 .title, .nav-brand {
     font-family: 'Yatra One', cursive;
 }
@@ -31,4 +33,13 @@ body {
     position: absolute;
     top: 25%;
     left: 25%;
+}
+
+.card-img > img {
+    width: 100%;
+    height: auto;
+}
+
+.video-container {
+    margin: 0 auto;
 }

@@ -6,7 +6,7 @@
 <body>
     <!-- Header up here -->
     <nav>
-        <li class="nav-brand">SenseiYT</li>
+        <% include partials/nav.ejs %>
     </nav>
     <header>
         <img class="header-img" src="https://images.unsplash.com/photo-1520163004802-7aadfcd17529?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9" alt="Japanese screen door">
@@ -19,16 +19,23 @@
         <!-- This will be in main -->
         <div class="row">
             <% moves.forEach((move) => { %>
+                <% const videoId = move.link.split('=')[1]%>
                 <div class="col s12 m6 l3">
-                    <div class="card">
+                    <div class="card hoverable">
                         <div class="card-content">
+                            <div class="card-img">
+                                <img src="https://img.youtube.com/vi/<%= videoId %>/maxresdefault.jpg" alt="Youtube video thumbnail">
+                            </div>
                             <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
-                            <p><%= move.notes %></p>
+                            <!-- <p><%= move.notes %></p> -->
                         </div>
                     </div>
                 </div>
                 <% }) %> 
         </div>
     </div>
+    <footer>
+        <p>Created for General Assembly's 2019 SEI Stamford Class by Deva Kothandapany</p>
+    </footer>
 </body>
 </html>

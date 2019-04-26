@@ -4,10 +4,17 @@
     <% include partials/head.ejs %>
 </head>
 <body>
-    <iframe src="<%= video %>" frameborder="0" width="250" height="200"></iframe>
-    <h1><%= move.title %></h1>
-    <p><%= move.notes %></p>
-    <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
-    <a href="/techniques"><button>Back to Index</button></a>
+    <nav>
+        <% include partials/nav.ejs %>
+    </nav>
+    <main class="video-container">
+        <iframe src="<%= video %>" frameborder="0" width="250" height="200"></iframe>
+    </main>
+    <summary class="container">
+        <h3><%= move.title %></h3>
+        <p><%= move.notes %></p>
+        <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
+        <a href="/techniques"><button>Back to Index</button></a>
+    </summary>
 </body>
 </html>

@@ -4,8 +4,11 @@
     <% include partials/head.ejs %>
 </head>
 <body>
-    <div class="container">
-        <h1>New Page</h1>
+    <nav>
+        <% include partials/nav.ejs %>
+    </nav>
+    <main class="container">
+        <h1>New Technique</h1>
 
         <form action="/techniques" method="POST">
             <label for="title">Title</label>
@@ -20,6 +23,7 @@
             <!-- Submit -->
             <input type="submit" value="Create New Technique">
         </form>
-    </div>
+        <a href="/techniques">Back to Index</a>
+    </main>
 </body>
 </html>
