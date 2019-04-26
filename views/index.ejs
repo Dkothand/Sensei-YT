@@ -5,16 +5,30 @@
 </head>
 <body>
     <!-- Header up here -->
-    <h1>Index</h1>
-    <a href="/techniques/new"><button>New Technique</button></a>
-
-    <!-- This will be in main -->
-    <% moves.forEach((move) => { %>
-        <div>
-            <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
-            <p><%= move.notes %></p>
+    <nav>
+        <li class="nav-brand">SenseiYT</li>
+    </nav>
+    <header>
+        <img class="header-img" src="https://images.unsplash.com/photo-1520163004802-7aadfcd17529?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9" alt="Japanese screen door">
+        <div class="header-content">
+            <h1 class="title flow-text">Sensei YouTube</h1>
+            <a href="/techniques/new"><button>New Technique</button></a>
         </div>
-    <% }) %>
-    
+    </header>
+    <div class="container">
+        <!-- This will be in main -->
+        <div class="row">
+            <% moves.forEach((move) => { %>
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <div class="card-content">
+                            <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
+                            <p><%= move.notes %></p>
+                        </div>
+                    </div>
+                </div>
+                <% }) %> 
+        </div>
+    </div>
 </body>
 </html>
