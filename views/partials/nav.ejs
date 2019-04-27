@@ -9,6 +9,11 @@
                 <input type="submit" value="Logout"/>
             </form>
         </li>
+        <li>
+            <form action="/users/" method="GET">
+                <input type="submit" value="Favorites">
+            </form>
+        </li>
         <li class="right">Welcome <%= currentUser.username%>!</li>
     <% } else { %>
         <li class="right">

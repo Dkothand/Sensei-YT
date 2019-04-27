@@ -12,11 +12,6 @@ const techniquesController = require('./controllers/techniques_controller.js');
 const usersController = require('./controllers/users_controller.js');
 const sessionsController = require('./controllers/sessions_controller.js');
 
-/*
-get package dotenv for .env file
-need to get require('dotenv').config()
-*/
-
 
 // PORT
 // Allow use of Heroku's port or your own local port, depending on the environment

@@ -16,6 +16,8 @@
 
         <% if (currentUser) { %>
             <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
+
+            <a href="/users/<%= move.id %>"><button>Add to Favorites</button></a>
         <% } %>
         <a href="/techniques"><button>Back to Index</button></a>
     </summary>

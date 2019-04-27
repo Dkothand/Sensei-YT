@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const userSchema = Schema({
   username: String,
   password: String,
-  favorites: [String]
+  favorites: {type: Array, default: []}
 })
 
 const User = mongoose.model('User', userSchema)

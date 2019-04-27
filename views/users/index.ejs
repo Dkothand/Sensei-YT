@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head.ejs %>
+</head>
+<body>
+    <nav>
+        <% include ../partials/nav.ejs %>
+    </nav>
+    <h1><%= currentUser.username %>'s Favorites</h1>
+    <main class="container">
+        <!-- Favorites load here -->
+        <ul>
+            <% currentUser.favorites.forEach((item) => {%>
+                <li><%= item %></li>
+            <% })%>
+        </ul>
+    </main>
+    
+</body>
+</html>
