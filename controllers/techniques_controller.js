@@ -20,7 +20,9 @@ techniques.get('/', (req, res) => {
 
 // NEW
 techniques.get('/new', (req, res) => {
-    res.render('new.ejs');
+    res.render('new.ejs', {
+        currentUser: req.session.currentUser
+    });
 });
 
 // SHOW
@@ -34,6 +36,7 @@ techniques.get('/:id', (req, res) => {
         const embedLink = embedLinkPrefix + embedLinkId
         res.render('show.ejs', {
             move: foundTechnique,
+            currentUser: req.session.currentUser,
             video: embedLink
         })
     })
@@ -46,7 +49,8 @@ techniques.get('/:id/edit', (req, res) => {
             console.log(err)
         }
         res.render('edit.ejs', {
-            move: foundTechnique
+            move: foundTechnique,
+            currentUser: req.session.currentUser
         })
     })
 });
