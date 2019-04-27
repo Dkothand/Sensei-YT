@@ -1,6 +1,8 @@
 // DEPENDENCIES
 const express = require('express');
 const methodOverride  = require('method-override');
+require('dotenv').config();
+
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
@@ -49,7 +51,7 @@ app.use(methodOverride('_method'));
 
 // NEED TO MOVE THIS TO ENV FILE
 app.use(session({
-  secret: "dogjumphorse",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
