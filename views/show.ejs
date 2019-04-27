@@ -13,7 +13,10 @@
     <summary class="container">
         <h3><%= move.title %></h3>
         <p><%= move.notes %></p>
-        <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
+
+        <% if (currentUser) { %>
+            <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
+        <% } %>
         <a href="/techniques"><button>Back to Index</button></a>
     </summary>
 </body>

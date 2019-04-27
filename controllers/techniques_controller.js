@@ -44,15 +44,19 @@ techniques.get('/:id', (req, res) => {
 
 // EDIT
 techniques.get('/:id/edit', (req, res) => {
-    Technique.findById(req.params.id, (err, foundTechnique) => {
-        if (err) {
-            console.log(err)
-        }
-        res.render('edit.ejs', {
-            move: foundTechnique,
-            currentUser: req.session.currentUser
-        })
-    })
+    if (req.session.currentUser) {
+        Technique.findById(req.params.id, (err, foundTechnique) => {
+            if (err) {
+                console.log(err)
+            }
+            res.render('edit.ejs', {
+                move: foundTechnique,
+                currentUser: req.session.currentUser
+            });
+        });
+    } else {
+        res.redirect('/sessions/new');
+    }
 });
 
 // CREATE
