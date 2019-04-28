@@ -11,10 +11,27 @@
     <main class="container">
         <!-- Favorites load here -->
         <ul>
-            <% currentUser.favorites.forEach((item) => {%>
-                <li><%= item %></li>
+            <% favorites.forEach((item) => {%>
+                <li><%= item.title %></li>
             <% })%>
         </ul>
+        <div class="row">
+            <% favorites.forEach((item) => { %>
+                <% const videoId = item.link.split('=')[1]%>
+                <div class="col s12 m6 l3">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-img">
+                                    <!-- https://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+                                    Inserting video thumbnail -->
+                                <img src="https://img.youtube.com/vi/<%= videoId %>/maxresdefault.jpg" alt="Youtube video thumbnail">
+                            </div>
+                            <a href="/techniques/<%= item.id %>"><h4><%= item.title %></h4></a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
     </main>
     
 </body>

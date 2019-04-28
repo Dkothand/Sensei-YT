@@ -1,14 +1,32 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const users = express.Router();
+const Technique = require('../models/technique.js');
 const User = require('../models/user.js');
 const bcrypt = require('bcrypt');
 
 // SHOW (FAVORITES)
 users.get('/', (req, res) => {
-    console.log(req.session.currentUser)
-    res.render('users/index.ejs', {
-        currentUser: req.session.currentUser
-    });
+    // console.log(req.session.currentUser)
+    // const favoritesArray = [];
+    const favorites = req.session.currentUser.favorites;
+    const favoritesIds = favorites.map(elem => mongoose.Types.ObjectId(elem));
+    // console.log(favorites);
+    // console.log(favorites);
+    // console.log(favoritesIds);
+
+    // try wrapping favorites array items in ObjectID
+    Technique.find({
+        '_id': { $in: favoritesIds}
+    }, (err, foundTechniques) => {
+        if (err) console.log(err)
+        const favoritesArray = foundTechniques;
+        console.log(favoritesArray)
+        res.render('users/index.ejs', {
+            currentUser: req.session.currentUser,
+            favorites: favoritesArray
+        });
+    })
 });
 
 
