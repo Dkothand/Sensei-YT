@@ -71,7 +71,7 @@ app.get('/' , (req, res) => {
 app.use((req, res, next) => {
   let err = new Error('Page Not Found');
   err.statusCode = 404;
-  err.shouldRedirect = true; // allows middleware to redirect
+  // err.shouldRedirect = true; // allows middleware to redirect
   next(err);
 })
 

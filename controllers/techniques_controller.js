@@ -26,10 +26,11 @@ techniques.get('/new', (req, res) => {
 });
 
 // SHOW
-techniques.get('/:id', (req, res) => {
+/*********** Passing random characters after technique/... crashes app, even with next(err) **********************/
+techniques.get('/:id', (req, res, next) => {
     Technique.findById(req.params.id, (err, foundTechnique) => {
         if (err) {
-            console.log(err)
+            next(err);
         }
         // Create embed link from db link
         const embedLinkId = foundTechnique.link.split('=')[1];
@@ -41,6 +42,7 @@ techniques.get('/:id', (req, res) => {
         })
     })
 });
+
 
 // EDIT
 techniques.get('/:id/edit', (req, res) => {
@@ -59,6 +61,7 @@ techniques.get('/:id/edit', (req, res) => {
     }
 });
 
+
 // CREATE
 techniques.post('/', (req, res) => {
     Technique.create(req.body, (err, createdTechnique) => {
@@ -69,6 +72,7 @@ techniques.post('/', (req, res) => {
         res.redirect('/techniques')
     });
 });
+
 
 // UPDATE
 techniques.put('/:id', (req, res) => {
@@ -81,6 +85,7 @@ techniques.put('/:id', (req, res) => {
     })
 });
 
+
 // ADD NOTE
 techniques.put('/:id/new', (req, res) => {
     Technique.findByIdAndUpdate(
@@ -91,7 +96,8 @@ techniques.put('/:id/new', (req, res) => {
             res.redirect('/techniques/' + req.params.id)
     });
     // res.send(req.body.note);
-})
+});
+
 
 // DELETE
 techniques.delete('/:id', (req, res) => {
