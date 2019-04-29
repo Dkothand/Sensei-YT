@@ -44,7 +44,7 @@ app.use(express.static('public'));
 //use method override
 app.use(methodOverride('_method'));
 
-// NEED TO MOVE THIS TO ENV FILE
+// MIDDLEWARE - SESSION
 app.use(session({
   secret: process.env.SECRET,
   resave: false,
@@ -52,10 +52,17 @@ app.use(session({
 }));
 
 
-// CONTROLLERS
+// MIDDLEWARE - CONTROLLERS
 app.use('/techniques', techniquesController);
 app.use('/users', usersController);
 app.use('/sessions', sessionsController);
+
+
+// MIDDLEWARE - ERROR HANDLERS
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 
 // ROUTES

@@ -34,14 +34,14 @@ users.get('/', (req, res) => {
 });
 
 
-//  NEW
+//  NEW USER PAGE
 users.get('/new', (req, res) => {
     res.render('users/new.ejs');
 });
 
-// CREATE
-users.post('/', (req, res) => {
-    // Sets isAdmin boolean
+// CREATE NEW USER
+users.post('/', (req, res, next) => {
+    // Sets isAdmin boolean on views/users/new.ejs
     // if (req.body.isAdmin === 'on') {
     //     req.body.isAdmin = true;
     // } else {
@@ -50,10 +50,12 @@ users.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {
         if (err) {
-            console.log(err);
-        };
-        console.log(createdUser);
-        res.redirect('/');
+            console.error(err);
+            next(err) // Pass error to Express
+        } else {
+            console.log(createdUser);
+            res.redirect('/');
+        }
     });
 });
 
