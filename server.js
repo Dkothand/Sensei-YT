@@ -58,11 +58,19 @@ app.use('/users', usersController);
 app.use('/sessions', sessionsController);
 
 
-// MIDDLEWARE - ERROR HANDLERS
+// MIDDLEWARE - ERROR HANDLERS (PUT AT END OF MIDDLEWARE)
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+  console.error(err.message);
+  if (!err.statusCode) err.statusCode = 500;
+  res.status(err.statusCode).send(err.message);
 });
+
+
+// app.use(function(err, req, res, next) {
+//   console.error(err.message); // Log error message in our server's console
+//   if (!err.statusCode) err.statusCode = 500; // If err has no specified error code, set error code to 'Internal Server Error (500)'
+//   res.status(err.statusCode).send(err.message); // All HTTP requests must have a response, so let's send back an error with its status code and message
+// });
 
 
 // ROUTES

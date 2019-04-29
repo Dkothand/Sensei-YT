@@ -50,8 +50,11 @@ users.post('/', (req, res, next) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {
         if (err) {
-            console.error(err);
-            next(err) // Pass error to Express
+            let err = new Error('Conflict: That Username already exists!');
+            err.statusCode = 409;
+            next(err);
+            // console.error(err);
+            // next(err) // Pass error to Express
         } else {
             console.log(createdUser);
             res.redirect('/');
