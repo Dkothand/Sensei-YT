@@ -13,11 +13,15 @@
     <summary class="container">
         <h3><%= move.title %></h3>
         
-        <% if (currentUser) { %>
+        <!-- Admin options -->
+        <% if (currentUser.isAdmin) { %>
             <form action="/techniques/<%= move.id %>/edit" method="GET">
                 <input type="submit" value="Edit Technique"/>
             </form>
+        <% } %>
             
+        <!-- Logged in User -->
+        <% if (currentUser) { %>
             <form action="/users/<%= move.id %>" method="POST">
                 <input type="submit" value="Add to Favorites"/>
             </form>
@@ -28,6 +32,7 @@
             </form>
         <% } %>
 
+        <!-- Logged out view -->
         <h4>Notes:</h4>
         <% move.notes.forEach((note) => {%>
             <div>
