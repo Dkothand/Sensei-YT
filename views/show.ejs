@@ -13,15 +13,17 @@
     <summary class="container">
         <h3><%= move.title %></h3>
         
-        <!-- Admin options -->
-        <% if (currentUser.isAdmin) { %>
-            <form action="/techniques/<%= move.id %>/edit" method="GET">
-                <input type="submit" value="Edit Technique"/>
-            </form>
-        <% } %>
-            
+        
         <!-- Logged in User -->
         <% if (currentUser) { %>
+
+            <!-- Admin options -->
+            <% if (currentUser.isAdmin) { %>
+                <form action="/techniques/<%= move.id %>/edit" method="GET">
+                    <input type="submit" value="Edit Technique"/>
+                </form>
+            <% } %>
+            
             <form action="/users/<%= move.id %>" method="POST">
                 <input type="submit" value="Add to Favorites"/>
             </form>
