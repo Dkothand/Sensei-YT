@@ -10,11 +10,6 @@
     <h1><%= currentUser.username %>'s Favorites</h1>
     <main class="container">
         <!-- Favorites load here -->
-        <ul>
-            <% favorites.forEach((item) => {%>
-                <li><%= item.title %></li>
-            <% })%>
-        </ul>
         <div class="row">
             <% favorites.forEach((item) => { %>
                 <% const videoId = item.link.split('=')[1]%>
@@ -27,12 +22,14 @@
                                 <img src="https://img.youtube.com/vi/<%= videoId %>/maxresdefault.jpg" alt="Youtube video thumbnail">
                             </div>
                             <a href="/techniques/<%= item.id %>"><h4><%= item.title %></h4></a>
+                            <form action="/users/<%= item.id %>?_method=DELETE" method="POST">
+                                <button>Remove Favorite</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             <% }) %> 
         </div>
     </main>
-    
 </body>
 </html>
