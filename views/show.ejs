@@ -12,17 +12,28 @@
     </main>
     <summary class="container">
         <h3><%= move.title %></h3>
-        <p><%= move.notes %></p>
-
+        
         <% if (currentUser) { %>
             <form action="/techniques/<%= move.id %>/edit" method="GET">
                 <input type="submit" value="Edit Technique"/>
             </form>
-
+            
             <form action="/users/<%= move.id %>" method="POST">
                 <input type="submit" value="Add to Favorites"/>
             </form>
+
+            <form action="/techniques/<%=move.id %>/new?_method=PUT" method="POST">
+                <textarea name="note" id="note" cols="30" rows="10" placeholder="Add a New Note..."></textarea>
+                <input type="submit" value="Add Note">
+            </form>
         <% } %>
+
+        <h4>Notes:</h4>
+        <% move.notes.forEach((note) => {%>
+            <div>
+                <%= note %>
+            </div>
+        <%})%>
         <a href="/techniques"><button>Back to Index</button></a>
     </summary>
 </body>

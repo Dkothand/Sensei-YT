@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const techniqueSchema = new Schema({
     title: String,
-    notes: String,
+    notes: [{type: String}],
     link: String
 });
 

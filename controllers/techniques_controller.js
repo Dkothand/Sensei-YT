@@ -81,6 +81,18 @@ techniques.put('/:id', (req, res) => {
     })
 });
 
+// ADD NOTE
+techniques.put('/:id/new', (req, res) => {
+    Technique.findByIdAndUpdate(
+        req.params.id,
+        {$push: {notes: req.body.note}},
+        {new: true},
+        (err, updatedTechnique) => {
+            res.redirect('/techniques/' + req.params.id)
+    });
+    // res.send(req.body.note);
+})
+
 // DELETE
 techniques.delete('/:id', (req, res) => {
     Technique.findByIdAndRemove(req.params.id, (err, removedTechnique) => {
