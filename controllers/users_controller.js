@@ -51,7 +51,7 @@ users.post('/', (req, res) => {
     });
 });
 
-// FAVORITES
+// ADD FAVORITE
 users.post('/:id', (req, res) => {
     const favTechnique = req.params.id;
     // console.log(favTechnique);
@@ -65,6 +65,7 @@ users.post('/:id', (req, res) => {
             console.log(err)
         }
         console.log(foundUser);
+        // Save changes to req.session and render
         req.session.currentUser = foundUser;
         req.session.save((err) => {
             res.redirect('/users/');
@@ -84,12 +85,16 @@ users.delete('/:id', (req, res) => {
         {$pull: {favorites: removeFavoriteId}},
         {new: true},
         (err, updatedUser) => {
-            if (err) {
-                console.log(err)
-            }
-            console.log(updatedUser);
+        if (err) {
+            console.log(err)
+        }
+        console.log(updatedUser);
+        // Save changes to req.session and rerender
+        req.session.currentUser = updatedUser;
+        req.session.save((err) => {
             res.redirect('/users/');
         });
+    });
 });
 
 module.exports = users;
