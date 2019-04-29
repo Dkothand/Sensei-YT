@@ -58,8 +58,16 @@ app.use('/users', usersController);
 app.use('/sessions', sessionsController);
 
 
+// ROUTES
+// redirects to /techniques for index page
+// create into landing/home page down the road
+app.get('/' , (req, res) => {
+  res.redirect('/techniques');
+});
+
 // MIDDLEWARE - ERROR HANDLERS (PUT AT END OF MIDDLEWARE)
-// Catches any route that's not defined already
+// Basic structure from: https://gist.github.com/zcaceres/2854ef613751563a3b506fabce4501fd
+// Catches any route that's not defined already (Needs to be below '/' route as it will catch as error)
 app.use((req, res, next) => {
   let err = new Error('Page Not Found');
   err.statusCode = 404;
@@ -70,14 +78,18 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500; // Set generic error status
+  res.render('error.ejs', {
+    error: err
+  });
 
-  if (err.shouldRedirect) {
-    res.render('error.ejs', { //renders error page
-      error: err
-    })
-  } else {
-    res.status(err.statusCode).send(err.message);
-  }
+  // Why specify redirect?
+  // if (err.shouldRedirect) {
+  //   res.render('error.ejs', { //renders error page
+  //     error: err
+  //   })
+  // } else {
+  //   res.status(err.statusCode).send(err.message);
+  // }
 });
 
 
@@ -86,18 +98,6 @@ app.use((err, req, res, next) => {
 //   if (!err.statusCode) err.statusCode = 500; // If err has no specified error code, set error code to 'Internal Server Error (500)'
 //   res.status(err.statusCode).send(err.message); // All HTTP requests must have a response, so let's send back an error with its status code and message
 // });
-
-
-// ROUTES
-
-
-
-// localhost:3000
-// redirects to /techniques for index page
-// create into landing/home page down the road
-app.get('/' , (req, res) => {
-  res.redirect('/techniques');
-});
 
 
 // LISTENER
