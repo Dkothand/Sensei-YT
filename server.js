@@ -59,10 +59,25 @@ app.use('/sessions', sessionsController);
 
 
 // MIDDLEWARE - ERROR HANDLERS (PUT AT END OF MIDDLEWARE)
+// Catches any route that's not defined already
+app.use((req, res, next) => {
+  let err = new Error('Page Not Found');
+  err.statusCode = 404;
+  err.shouldRedirect = true; // allows middleware to redirect
+  next(err);
+})
+
 app.use((err, req, res, next) => {
   console.error(err.message);
-  if (!err.statusCode) err.statusCode = 500;
-  res.status(err.statusCode).send(err.message);
+  if (!err.statusCode) err.statusCode = 500; // Set generic error status
+
+  if (err.shouldRedirect) {
+    res.render('error.ejs', { //renders error page
+      error: err
+    })
+  } else {
+    res.status(err.statusCode).send(err.message);
+  }
 });
 
 
@@ -74,6 +89,9 @@ app.use((err, req, res, next) => {
 
 
 // ROUTES
+
+
+
 // localhost:3000
 // redirects to /techniques for index page
 // create into landing/home page down the road

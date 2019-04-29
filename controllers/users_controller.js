@@ -52,6 +52,7 @@ users.post('/', (req, res, next) => {
         if (err) {
             let err = new Error('Conflict: That Username already exists!');
             err.statusCode = 409;
+            err.shouldRedirect = true;
             next(err);
             // console.error(err);
             // next(err) // Pass error to Express
