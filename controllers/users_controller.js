@@ -5,8 +5,18 @@ const Technique = require('../models/technique.js');
 const User = require('../models/user.js');
 const bcrypt = require('bcrypt');
 
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next();
+    } else {
+        let err = new Error('You must log in first!')
+        err.statusCode = 401;
+        next(err);
+    }
+};
+
 // SHOW (FAVORITES)
-users.get('/', (req, res) => {
+users.get('/', isAuthenticated, (req, res) => {
     // console.log(req.session.currentUser)
     // const favoritesArray = [];
     const favorites = req.session.currentUser.favorites;
