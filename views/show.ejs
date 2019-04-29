@@ -15,9 +15,13 @@
         <p><%= move.notes %></p>
 
         <% if (currentUser) { %>
-            <a href="/techniques/<%= move.id %>/edit"><button>Edit Technique</button></a>
+            <form action="/techniques/<%= move.id %>/edit" method="GET">
+                <input type="submit" value="Edit Technique"/>
+            </form>
 
-            <a href="/users/<%= move.id %>"><button>Add to Favorites</button></a>
+            <form action="/users/<%= move.id %>" method="POST">
+                <input type="submit" value="Add to Favorites"/>
+            </form>
         <% } %>
         <a href="/techniques"><button>Back to Index</button></a>
     </summary>
