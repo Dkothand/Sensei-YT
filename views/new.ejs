@@ -8,7 +8,7 @@
         <% include partials/nav.ejs %>
     </nav>
     <main class="container">
-        <h1>New Technique</h1>
+        <!-- <h1>New Technique</h1>
 
         <form action="/techniques" method="POST">
             <label for="title">Title</label>
@@ -18,12 +18,22 @@
             <input type="text" name="link" id="link">
 
             <label for="notes">Notes</label>
-            <textarea name="notes" id="notes" cols="30" rows="30">Default Notes</textarea>
+            <textarea name="notes" id="notes" cols="30" rows="30">Default Notes</textarea> -->
 
             <!-- Submit -->
-            <input type="submit" value="Create New Technique">
+            <!-- <input type="submit" value="Create New Technique">
+        </form> -->
+
+        <h1>Search for new techniques</h1>
+
+        <form action="#" id="search-bar">
+            <input type="text" id="search" placeholder="Search Youtube videos"/>
+            <input type="submit" value="Search"/>
         </form>
+        <div class="results"></div>
         <a href="/techniques">Back to Index</a>
     </main>
+    <!-- Youtube API js -->
+<!-- <script src="https://apis.google.com/js/api.js"></script> -->
 </body>
 </html>
