@@ -2,7 +2,8 @@ const express = require('express');
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
-const embedLinkPrefix = 'https://www.youtube.com/embed/';
+// Embed link, add video ID to end to embed in html
+// const embedLinkPrefix = 'https://www.youtube.com/embed/';
 
 
 // INDEX
@@ -32,13 +33,9 @@ techniques.get('/:id', (req, res, next) => {
         if (err) {
             next(err);
         }
-        // Create embed link from db link
-        const embedLinkId = foundTechnique.link.split('=')[1];
-        const embedLink = embedLinkPrefix + embedLinkId
         res.render('show.ejs', {
             move: foundTechnique,
-            currentUser: req.session.currentUser,
-            video: embedLink
+            currentUser: req.session.currentUser
         })
     })
 });

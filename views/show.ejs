@@ -8,7 +8,7 @@
         <% include partials/nav.ejs %>
     </nav>
     <main class="video-container">
-        <iframe src="<%= video %>" frameborder="0" width="250" height="200"></iframe>
+        <iframe src="https://www.youtube.com/embed/<%= move.videoId %>" frameborder="0" width="250" height="200"></iframe>
     </main>
     <summary class="container">
         <h3><%= move.title %></h3>
@@ -34,7 +34,7 @@
             </form>
         <% } %>
 
-        <!-- Logged out view -->
+        <!-- Notes -->
         <h4>Notes:</h4>
         <% move.notes.forEach((note) => {%>
             <div>

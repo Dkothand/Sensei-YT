@@ -9,13 +9,17 @@
     </nav>
     <main class="container">
         <h1>Edit: <%= move.title %></h1>
+
+        <div class="img-container">
+            <img src="https://img.youtube.com/vi/<%= move.videoId %>/hqdefault.jpg" alt="YouTube thumbnail <%= move.title %>">
+        </div>
     
         <form action="/techniques/<%= move.id%>?_method=PUT" method="POST">
-            <label for="title">Title</label>
+            <!-- <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= move.title %>">
     
             <label for="link">Embed Link</label>
-            <input type="text" name="link" id="link" value="<%= move.link %>">
+            <input type="text" name="link" id="link" value="<%= move.link %>"> -->
     
             <label for="notes">Notes</label>
             <textarea name="notes" id="notes" cols="30" rows="30"><%= move.notes %></textarea>
