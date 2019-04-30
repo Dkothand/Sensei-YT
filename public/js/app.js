@@ -23,9 +23,8 @@ const createCard = (obj) => {
     const $imgDiv = $('<div>').attr('class', 'card-image');
 
     $colDiv.append(
-        $cardDiv.append(
-            $contentDiv.append($imgDiv)
-        )
+        $cardDiv.append($imgDiv)
+        .append($contentDiv)
     );
 
     // Make image
@@ -35,7 +34,7 @@ const createCard = (obj) => {
 
     // Make title
     const objTitle = obj.snippet.title;
-    const $title = $('<p>').text(objTitle);
+    const $title = $('<h4>').text(objTitle);
     $title.appendTo($contentDiv);
 
     // Get video Id
