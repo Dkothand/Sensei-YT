@@ -16,13 +16,17 @@
         </div>
 
         <% if (currentUser) { %>
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large" href="/techniques/new"><i class="material-icons">add</i></a>
-        </div>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large scale-transition scale-out" href="/techniques/new"><i class="material-icons">add</i></a>
+            </div>
         <% } %>
 
 
     </header>
+    <div>
+        <h4 class="library-header center-align flow-text">--- Browse Library ---</h4>
+    </div>
+    <div class="divider"></div>
     <main class="container">
         <!-- This will be in main -->
         <div class="row">
@@ -34,7 +38,7 @@
                                 <img src="https://img.youtube.com/vi/<%= move.videoId %>/hqdefault.jpg" alt="Youtube video thumbnail">
                             </a>
                         <div class="card-content">
-                            <h4><%= move.title %></h4>
+                            <h5><%= move.title %></h5>
                         </div>
                         </div>
                     </div>

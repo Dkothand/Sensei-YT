@@ -145,6 +145,13 @@ $(() => {
     $('#new-note').on('submit', (e) => {
         e.preventDefault();
         createNewNote();
+    });
+
+    // Toggles floating action button to scale in when scrolling past navbar
+    $(document).scroll(() => {
+        const $nav = $('.nav-wrapper');
+        const $button = $('.btn-floating');
+        $button.toggleClass('scale-out', $(this).scrollTop() < $nav.height());
     })
 });
 // End Document ready function
