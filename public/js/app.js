@@ -31,14 +31,41 @@ const createCard = (obj) => {
     // Make image
     const imageUrl = obj.snippet.thumbnails.high.url;
     const $img = $('<img>').attr('src', imageUrl);
-
     $img.appendTo($imgDiv);
 
     // Make title
     const objTitle = obj.snippet.title;
     const $title = $('<p>').text(objTitle);
-
     $title.appendTo($contentDiv);
+
+    // Get video Id
+    const objVideoId = obj.id.videoId;
+
+    // Create form to add to library
+    const $objForm = $('<form>')
+        .attr('action', '/techniques') 
+        .attr('method', 'POST');
+
+    // Append input fields to form
+    const $titleInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('name', 'title')
+        .attr('value', objTitle);
+
+    const $videoInput = $('<input>')
+        .attr('type', 'hidden')
+        .attr('name', 'videoId')
+        .attr('value', objVideoId);
+
+    const $submitInput = $('<input>')
+        .attr('type', 'submit')
+        .attr('value', 'Add to Library');
+
+    $objForm.append($titleInput)
+        .append($videoInput)
+        .append($submitInput);
+
+    $objForm.appendTo($contentDiv);
 
     // return outer div will all content appended
     return $colDiv;
@@ -64,7 +91,7 @@ const youtubeApiCall = () => {
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
             key: youtubeApiKey,
-            maxResults: 5,
+            maxResults: 8,
             part: 'snippet',
             q: userQuery
         },
