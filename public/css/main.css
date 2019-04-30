@@ -12,16 +12,36 @@ body {
     /* background-color: #ffffd7; */
 }
 
+/*============== Navbar ======================*/
+.nav-wrapper {
+    background-color: #000;
+}
+
+nav .brand-logo, nav a {
+    color: #fff;
+}
+
+nav .brand-logo, nav a:focus {
+    color: #ffb7c5;
+}
+
+nav li {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
 /*=============== Index.ejs =================*/
 .title, .brand-logo {
     font-family: 'Yatra One', cursive;
 }
 
 .title {
-    /* font-size: 5rem; */
     color: #fff;
+    text-shadow: 2px 2px #000;
+    font-size: 4rem;
 }
 
+/* Header Image */
 .header-img {
     width: 100%;
     height: auto;
@@ -29,15 +49,37 @@ body {
     filter: grayscale(100%);
 }
 
+/* Header Title */
 .header-content {
     position: absolute;
     top: 25%;
-    left: 25%;
+    left: 15%;
 }
 
+/* Floating Action Button - Create */
+.fixed-action-btn {
+    padding-top: 0;
+    bottom: 35px;
+}
+
+.btn-floating.btn-large {
+    /* Override width and height */
+    width: 64px;
+    height: 45px;
+}
+.btn-floating {
+    /* Remove circle shape */
+    border-radius: 0;
+    background-color: #ffb7c5; /* Needs to be darker shade */
+}
 .card-img > img {
     width: 100%;
     height: auto;
+}
+
+footer {
+    color: #fff;
+    background-color: #000;
 }
 
 .video-container {
