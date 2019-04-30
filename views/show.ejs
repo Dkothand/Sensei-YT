@@ -28,7 +28,8 @@
                 <input type="submit" value="Add to Favorites"/>
             </form>
 
-            <form action="/techniques/<%=move.id %>/new?_method=PUT" method="POST">
+            <!-- <form id="new-note" action="/techniques/<%=move.id %>/new?_method=PUT" method="POST"> -->
+            <form action="#" id="new-note">
                 <textarea name="note" id="note" cols="30" rows="10" placeholder="Add a New Note..."></textarea>
                 <input type="submit" value="Add Note">
             </form>
@@ -36,11 +37,13 @@
 
         <!-- Notes -->
         <h4>Notes:</h4>
-        <% move.notes.forEach((note) => {%>
-            <div>
-                <%= note %>
-            </div>
-        <%})%>
+        <div class="notes-list">
+            <% move.notes.forEach((note) => {%>
+                <div class="note">
+                    <%= note %>
+                </div>
+            <%})%>
+        </div>
         <a href="/techniques"><button>Back to Index</button></a>
     </summary>
 </body>

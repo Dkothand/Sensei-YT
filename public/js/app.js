@@ -69,7 +69,34 @@ const createCard = (obj) => {
 
     // return outer div will all content appended
     return $colDiv;
+};
+
+// Sends note to express route to store in database, renders to DOM upon success
+const createNewNote = () => {
+    // Get note
+    const note = $('#note').val();
+    const $noteDiv = $('<div>').attr('class', 'note').append(note);
+    // $noteDiv.appendTo($('.notes-list'));
+
+    // Get url for technique id
+    const url = $(location).attr('href');
+    const splitUrl = url.split('/');
+    const techniqueId = splitUrl[splitUrl.length - 1]
+    // console.log(techniqueId);
+    $.ajax({
+        url: '/techniques/' + techniqueId + '/new',
+        data: {
+            note: note
+        },
+        dataType: 'json',
+        type: 'PUT',
+        success: () => {
+            $noteDiv.appendTo($('.notes-list'));
+            // $('#note').val('');
+        }
+    });
 }
+
 
 // Takes array of video objects from YouTube API call and renders to DOM
 const renderSearchResults = (arr) => {
@@ -107,9 +134,17 @@ const youtubeApiCall = () => {
 
 // Document ready function
 $(() => {
+    // Search bar in new.ejs to query YouTube API
     $('#search-bar').on('submit', (e) => {
         e.preventDefault();
         youtubeApiCall();
+        $('#search').val('');
+    });
+
+    // Enter new note on technique show.ejs view
+    $('#new-note').on('submit', (e) => {
+        e.preventDefault();
+        createNewNote();
     })
 });
 // End Document ready function
