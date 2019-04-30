@@ -20,7 +20,7 @@ const createCard = (obj) => {
     const $colDiv = $('<div>').attr('class', 'col s12 m6 l3');
     const $cardDiv = $('<div>').attr('class', 'card hoverable');
     const $contentDiv = $('<div>').attr('class', 'card-content');
-    const $imgDiv = $('<div>').attr('class', 'card-img');
+    const $imgDiv = $('<div>').attr('class', 'card-image');
 
     $colDiv.append(
         $cardDiv.append(
@@ -70,6 +70,7 @@ const createCard = (obj) => {
     // return outer div will all content appended
     return $colDiv;
 };
+
 
 // Sends note to express route to store in database, renders to DOM upon success
 const createNewNote = () => {

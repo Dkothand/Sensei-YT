@@ -11,29 +11,37 @@
     <header>
         <img class="header-img" src="https://images.unsplash.com/photo-1520163004802-7aadfcd17529?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9" alt="Japanese screen door">
         <div class="header-content">
-            <h1 class="title flow-text">Sensei YouTube</h1>
+            <h1 class="title">Sensei</h1> 
+            <h1 class="title">YouTube</h1>
         </div>
+
+        <% if (currentUser) { %>
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large" href="/techniques/new">New</a>
+            <a class="btn-floating btn-large" href="/techniques/new"><i class="material-icons">add</i></a>
         </div>
+        <% } %>
+
+
     </header>
-    <div class="container">
+    <main class="container">
         <!-- This will be in main -->
         <div class="row">
             <% moves.forEach((move) => { %>
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
-                        <div class="card-content">
-                            <div class="card-img">
+                        <div class="card-image">
+                            <a href="/techniques/<%= move.id %>">
                                 <img src="https://img.youtube.com/vi/<%= move.videoId %>/hqdefault.jpg" alt="Youtube video thumbnail">
-                            </div>
-                            <a href="/techniques/<%= move.id %>"><h4><%= move.title %></h4></a>
+                            </a>
+                        <div class="card-content">
+                            <h4><%= move.title %></h4>
+                        </div>
                         </div>
                     </div>
                 </div>
             <% }) %> 
         </div>
-    </div>
+    </main>
     <footer>
         <p>Created for General Assembly's 2019 SEI Stamford Class by Deva Kothandapany</p>
     </footer>
