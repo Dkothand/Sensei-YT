@@ -68,6 +68,8 @@ users.post('/', (req, res, next) => {
             // next(err) // Pass error to Express
         } else {
             console.log(createdUser);
+            // Log user in on creation
+            req.session.currentUser = createdUser;
             res.redirect('/');
         }
     });
