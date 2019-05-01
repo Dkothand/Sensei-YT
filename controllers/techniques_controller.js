@@ -76,6 +76,7 @@ techniques.post('/new', (req, res) => {
             part: 'snippet',
             maxResults: 12,
             q: req.body.search || 'bjj techniques',
+            type: 'video', // exclude channels and playlists
             key: 'AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk'
         }
     }
