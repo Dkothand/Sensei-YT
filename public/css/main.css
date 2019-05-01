@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu|Yatra+One');
 
-/* font-family: 'Yatra One', cursive;
-font-family: 'Ubuntu', sans-serif; */
-
 * { 
     outline: 1px solid black;
 }
@@ -43,7 +40,7 @@ nav li {
 /* Header Image */
 .header-img {
     width: 100%;
-    height: auto;
+    height: 100vh; /* fill viewport */
     position: relative;
     filter: grayscale(100%);
 }
@@ -57,6 +54,11 @@ nav li {
 
 main.container, article.container, header, .library-header {
     background-color: #fff;
+}
+
+.video-container {
+    /* width: 95%; */
+    margin: 2%;
 }
 
 .library-header {
@@ -105,10 +107,6 @@ main.container, article.container, header, .library-header {
 }
 
 /***** Card ************/
-/* .card-img > img {
-    width: 100%;
-    height: auto;
-} */
 
 .card {
     margin: 5% 0;
@@ -133,8 +131,13 @@ footer > p {
     margin-bottom: 0;
 }
 
-.video-container {
+.image-container {
+    width: 70%;
     margin: 0 auto;
+}
+
+.edit-image {
+    width: 100%;
 }
 
 /*========== Form Styling =================*/
@@ -200,7 +203,7 @@ section.notes-section {
 }
 
 .note {
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin: 10px 0;
     padding: 0 2px;
     background-color: #fff;
