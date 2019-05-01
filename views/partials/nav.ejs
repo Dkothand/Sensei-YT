@@ -1,17 +1,19 @@
 <!-- views/partials/nav.ejs -->
-<div class="nav-wrapper">
-    <a href="/techniques" class="brand-logo left">SYT</a>
+<ul class="nav-wrapper">
+    <li class="left">
+        <a href="/techniques" class="brand-logo left">SYT</a>
+    </li>
 
     <% if (currentUser) { %>
         <!-- Logout Button -->
         <li class="right">
             <form action="/sessions?_method=DELETE" method="POST">
-                <input type="submit" value="Logout"/>
+                <input class="btn nav-btn" type="submit" value="Logout"/>
             </form>
         </li>
-        <li>
+        <li class="right">
             <form action="/users" method="GET">
-                <input type="submit" value="Favorites">
+                <input class="btn nav-btn" type="submit" value="Favorites">
             </form>
         </li>
         <li class="right">Welcome <%= currentUser.username%>!</li>
@@ -25,4 +27,4 @@
             <a href="/sessions/new">Log In</a>
         </li>
     <% } %>
-</div>
+</ul>
