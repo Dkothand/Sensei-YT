@@ -28,6 +28,7 @@
                 <input class="btn" type="submit" value="Add to Favorites"/>
             </form>
 
+
             <!-- <form id="new-note" action="/techniques/<%=move.id %>/new?_method=PUT" method="POST"> -->
             <form action="#" id="new-note" class="center">
                 <textarea name="note" id="note" cols="30" rows="10" placeholder="Add a New Note..."></textarea>
@@ -35,8 +36,11 @@
             </form>
         <% } %>
 
+        <!-- <a href="/techniques"><button>Back to Index</button></a> -->
+    </main>
+    <section class="notes-section">
         <!-- Notes -->
-        <h5>Notes:</h5>
+        <!-- <h5>Notes:</h5> -->
         <div class="divider"></div>
         <div class="notes-list center-align">
             <% move.notes.forEach((note) => {%>
@@ -45,7 +49,6 @@
                 </div>
             <%})%>
         </div>
-        <!-- <a href="/techniques"><button>Back to Index</button></a> -->
-    </main>
+    </section>
 </body>
 </html>
