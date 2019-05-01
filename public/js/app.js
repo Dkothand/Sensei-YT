@@ -17,7 +17,7 @@ const youtubeApiKey = "AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk";
 
 const createCard = (obj) => {
     // Build nested divs
-    const $colDiv = $('<div>').attr('class', 'col s12 m6 l3');
+    const $colDiv = $('<div>').attr('class', 'col s12 m6 l4');
     const $cardDiv = $('<div>').attr('class', 'card hoverable');
     const $contentDiv = $('<div>').attr('class', 'card-content');
     const $imgDiv = $('<div>').attr('class', 'card-image');
@@ -34,7 +34,8 @@ const createCard = (obj) => {
 
     // Make title
     const objTitle = obj.snippet.title;
-    const $title = $('<h4>').text(objTitle);
+    const $title = $('<h4>').text(objTitle).addClass('truncate activator');
+    // add card-reveal div
     $title.appendTo($contentDiv);
 
     // Get video Id
