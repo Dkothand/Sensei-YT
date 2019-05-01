@@ -208,6 +208,12 @@ section.notes-section {
 
 
 /*========== Media Queries =============*/
+@media (max-width: 450px) {
+    .welcome {
+        display: none;
+    }
+}
+
 @media (min-width: 601px) {
     .header-content {
         top: 30%;
