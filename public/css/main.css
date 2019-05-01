@@ -92,6 +92,12 @@ main.container, article.container, header, .library-header {
     
 }
 
+/*=========== Row ============*/
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 /***** Card ************/
 /* .card-img > img {
     width: 100%;
@@ -160,8 +166,9 @@ input.btn {
     background-color: #d24b33;
 }
 
-/* Remove from favorites */
-input.btn-remove {
+/* Add to library / Remove from favorites */
+input.btn-flat, input.btn-remove {
+    color: #fff;
     background-color: blue;
 }
 
