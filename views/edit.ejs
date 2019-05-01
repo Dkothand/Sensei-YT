@@ -8,12 +8,15 @@
         <% include partials/nav.ejs %>
     </nav>
     <main class="container">
-        <h1>Edit: <%= move.title %></h1>
+        <h2 class="flow-text center"><%= move.title %></h2>
 
-        <div class="img-container">
-            <img src="https://img.youtube.com/vi/<%= move.videoId %>/hqdefault.jpg" alt="YouTube thumbnail <%= move.title %>">
+        <div class="divider"></div>
+
+        <div class="image-container center">
+            <img class="edit-image" src="https://img.youtube.com/vi/<%= move.videoId %>/hqdefault.jpg" alt="YouTube thumbnail <%= move.title %>">
         </div>
     
+
         <form action="/techniques/<%= move.id%>?_method=PUT" method="POST">
             <!-- <label for="title">Title</label>
             <input type="text" name="title" id="title" value="<%= move.title %>">
@@ -25,12 +28,12 @@
             <textarea name="notes" id="notes" cols="30" rows="30"><%= move.notes %></textarea>
     
             <!-- Submit -->
-            <input type="submit" value="Edit Technique">
+            <input class="btn" type="submit" value="Edit Technique">
         </form>
+
         <form action="/techniques/<%= move.id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Technique"/>
+            <input class="btn" type="submit" value="Delete Technique"/>
         </form>
-        <a href="/techniques">Back to Index</a>
     </main>
 </body>
 </html>
