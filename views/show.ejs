@@ -7,11 +7,11 @@
     <nav>
         <% include partials/nav.ejs %>
     </nav>
-    <main class="video-container">
+    <div class="video-container">
         <iframe src="https://www.youtube.com/embed/<%= move.videoId %>" frameborder="0" width="250" height="200"></iframe>
-    </main>
-    <summary class="container">
-        <h3><%= move.title %></h3>
+    </div>
+    <main class="container">
+        <h3 class="center-align"><%= move.title %></h3>
         
         
         <!-- Logged in User -->
@@ -19,32 +19,33 @@
 
             <!-- Admin options -->
             <% if (currentUser.isAdmin) { %>
-                <form action="/techniques/<%= move.id %>/edit" method="GET">
-                    <input type="submit" value="Edit Technique"/>
+                <form class="form-options" action="/techniques/<%= move.id %>/edit" method="GET">
+                    <input class="btn" type="submit" value="Edit Technique"/>
                 </form>
             <% } %>
             
-            <form action="/users/<%= move.id %>" method="POST">
-                <input type="submit" value="Add to Favorites"/>
+            <form id="favorites" class="form-options right" action="/users/<%= move.id %>" method="POST">
+                <input class="btn" type="submit" value="Add to Favorites"/>
             </form>
 
             <!-- <form id="new-note" action="/techniques/<%=move.id %>/new?_method=PUT" method="POST"> -->
-            <form action="#" id="new-note">
+            <form action="#" id="new-note" class="center">
                 <textarea name="note" id="note" cols="30" rows="10" placeholder="Add a New Note..."></textarea>
-                <input type="submit" value="Add Note">
+                <input class="btn" type="submit" value="Add Note">
             </form>
         <% } %>
 
         <!-- Notes -->
-        <h4>Notes:</h4>
-        <div class="notes-list">
+        <h5>Notes:</h5>
+        <div class="divider"></div>
+        <div class="notes-list center-align">
             <% move.notes.forEach((note) => {%>
                 <div class="note">
                     <%= note %>
                 </div>
             <%})%>
         </div>
-        <a href="/techniques"><button>Back to Index</button></a>
-    </summary>
+        <!-- <a href="/techniques"><button>Back to Index</button></a> -->
+    </main>
 </body>
 </html>

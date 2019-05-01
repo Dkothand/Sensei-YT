@@ -126,6 +126,11 @@ footer > p {
 }
 
 /*========== Form Styling =================*/
+/* Add to Favorties form */
+form.form-options {
+    display: inline-block;
+}
+
 /* Sessions login form */
 form.log-in {
     width: 50%;
@@ -144,6 +149,18 @@ input.btn {
 
 input.btn-remove {
     background-color: blue;
+}
+
+/*=============== Notes views/show.ejs ======================*/
+.notes-list {
+    background-color: #9bdde9;
+    margin-top: 10px;
+}
+
+.note {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    background-color: #fff;
 }
 
 
