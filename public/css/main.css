@@ -96,6 +96,12 @@ main.container, article.container, header, .library-header {
 .row {
     display: flex;
     flex-flow: row wrap;
+    justify-content: flex-start;
+}
+ 
+/* Remove margin-left to override flexbox */
+.row .col {
+    margin-left: 0 !important;
 }
 
 /***** Card ************/
@@ -155,6 +161,11 @@ form.log-in {
     width: 50%;
     margin: 0 auto;
     padding-bottom: 10px;
+}
+
+/* Edit forms - Admin view */
+section.form-section {
+    display: inline-block;
 }
 
 /* Search field for youtube videos in new.ejs */
