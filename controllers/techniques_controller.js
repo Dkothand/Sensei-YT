@@ -4,9 +4,16 @@ require('dotenv').config();
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
-// Embed link, add video ID to end to embed in html
-// const embedLinkPrefix = 'https://www.youtube.com/embed/';
-
+// Authentication middleware
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next();
+    } else {
+        let err = new Error('You must log in first!')
+        err.statusCode = 401;
+        next(err);
+    }
+};
 
 // INDEX
 techniques.get('/', (req, res) => {
@@ -22,7 +29,7 @@ techniques.get('/', (req, res) => {
 });
 
 // NEW
-techniques.get('/new', (req, res) => {
+techniques.get('/new', isAuthenticated, (req, res) => {
     res.render('new.ejs', {
         currentUser: req.session.currentUser,
         results: null // Stops error with new.ejs results conditional before searching for videos
@@ -45,8 +52,8 @@ techniques.get('/:id', (req, res, next) => {
 
 
 // EDIT
-techniques.get('/:id/edit', (req, res) => {
-    if (req.session.currentUser) {
+techniques.get('/:id/edit', (req, res, next) => {
+    if (req.session.currentUser.isAdmin) {
         Technique.findById(req.params.id, (err, foundTechnique) => {
             if (err) {
                 console.log(err)
@@ -57,7 +64,10 @@ techniques.get('/:id/edit', (req, res) => {
             });
         });
     } else {
-        res.redirect('/sessions/new');
+        // res.redirect('/sessions/new');
+        let err = new Error('Unauthorized user')
+        err.statusCode = 401;
+        next(err);
     }
 });
 
