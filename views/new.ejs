@@ -7,7 +7,7 @@
     <nav>
         <% include partials/nav.ejs %>
     </nav>
-    <main class="container">
+    <main class="container center-align">
         <!-- <h1>New Technique</h1>
 
         <form action="/techniques" method="POST">
@@ -24,13 +24,13 @@
             <!-- <input type="submit" value="Create New Technique">
         </form> -->
 
-        <h1>Search for new techniques</h1>
+        <h2>Search for new techniques</h2>
 
         <form action="#" id="search-bar">
-            <input type="text" id="search" placeholder="Search Youtube videos"/>
-            <input type="submit" value="Search"/>
+            <input type="text" id="search" placeholder="Search Youtube"/>
+            <input class="btn" type="submit" value="Search"/>
         </form>
-        <a href="/techniques">Back to Index</a>
+        <a href="/techniques">Back to Homepage</a>
         <div class="row results"></div>
     </main>
 </body>

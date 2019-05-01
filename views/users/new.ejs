@@ -5,21 +5,24 @@
     <% include ../partials/head.ejs %>
 </head>
 <body>
-    <div class="container">
-        <h1>Create a New User</h1>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/techniques" class="brand-logo left">SYT</a>
+        </div>
+    </nav>
+    <main class="container center-align">
+        <h1>Register Account</h1>
 
-        <form action="/users" method="POST">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+        <form class="log-in" action="/users" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username">
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" placeholder="Password">
 
             <!-- Sets Admin privledges, uncomment and run when deployed to heroku, then remove -->
             <!-- isAdmin: <input type="checkbox" name="isAdmin" checked/>
             <br> -->
-            <input type="submit" value="Create User">
+            <input class="btn" type="submit" value="Create User">
         </form>
-    </div>
+    </main>
 </body>
 </html>

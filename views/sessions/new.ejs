@@ -4,18 +4,23 @@
     <% include ../partials/head.ejs %>
 </head>
 <body>
-    <div class="container">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/techniques" class="brand-logo left">SYT</a>
+        </div>
+    </nav>
+    <article class="container center-align">
         <h1>Log In</h1>
 
-        <form action="/sessions" method="POST">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+        <form class="log-in" action="/sessions" method="POST">
+            <!-- <label for="username">Username</label> -->
+            <input type="text" name="username" id="username" placeholder="Username">
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <!-- <label for="password">Password</label> -->
+            <input type="password" name="password" id="password" placeholder="Password">
 
-            <input type="submit" value="Log in">
+            <input class="btn" type="submit" value="Log in">
         </form>
-    </div>
+    </article>
 </body>
 </html>
