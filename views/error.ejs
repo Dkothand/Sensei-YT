@@ -4,8 +4,11 @@
     <% include partials/head.ejs %>
 </head>
 <body>
-    <h1><%= error.statusCode %> Error</h1>
-    <h3><%= error.message %></h3>
-    <a href="/">Back to Homepage</a>
+    <main class="container center-align">
+        <h1><%= error.statusCode %> Error</h1>
+        <!-- put image here -->
+        <h3><%= error.message %></h3>
+        <a href="/">Back to Homepage</a>
+    </main>
 </body>
 </html>
