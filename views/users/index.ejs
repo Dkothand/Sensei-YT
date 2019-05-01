@@ -7,20 +7,23 @@
     <nav>
         <% include ../partials/nav.ejs %>
     </nav>
-    <h1><%= currentUser.username %>'s Favorites</h1>
     <main class="container">
+        <h1 class="center-align"><%= currentUser.username %>'s Favorites</h1>
+        <div class="divider"></div>
         <!-- Favorites load here -->
         <div class="row">
             <% favorites.forEach((technique) => { %>
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6 l4">
                     <div class="card hoverable">
                         <div class="card-content">
                             <div class="card-img">
-                                <img src="https://img.youtube.com/vi/<%= technique.videoId %>/hqdefault.jpg" alt="Youtube thumbnail <%= technique.title %>">
+                                <a href="/techniques/<%= technique.id %>">
+                                    <img src="https://img.youtube.com/vi/<%= technique.videoId %>/hqdefault.jpg" alt="Youtube thumbnail <%= technique.title %>">
+                                </a>
                             </div>
-                            <a href="/techniques/<%= technique.id %>"><h4><%= technique.title %></h4></a>
+                            <h4><%= technique.title %></h4>
                             <form action="/users/<%= technique.id %>?_method=DELETE" method="POST">
-                                <button>Remove Favorite</button>
+                                <input class="btn btn-remove" type="submit" value="Remove Favorite">
                             </form>
                         </div>
                     </div>
