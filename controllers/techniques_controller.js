@@ -128,9 +128,10 @@ techniques.put('/:id', (req, res) => {
 // Getting ajax request to work with put route
 // https://stackoverflow.com/questions/22820734/how-to-return-success-from-ajax-post-in-node-js
 techniques.put('/:id/new', (req, res) => {
+    const note = req.body.note + ' - ' + req.session.currentUser.username;
     Technique.findByIdAndUpdate(
         req.params.id,
-        {$push: {notes: req.body.note}},
+        {$push: {notes: note}},
         {new: true},
         (err, updatedTechnique) => {
             // res.redirect('/techniques/' + req.params.id)
