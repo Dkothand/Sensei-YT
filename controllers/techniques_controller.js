@@ -1,4 +1,7 @@
 const express = require('express');
+
+const request = require('request');
+
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
@@ -22,7 +25,8 @@ techniques.get('/', (req, res) => {
 // NEW
 techniques.get('/new', (req, res) => {
     res.render('new.ejs', {
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        results: null // Stops error with new.ejs results conditional before searching for videos
     });
 });
 
@@ -58,6 +62,38 @@ techniques.get('/:id/edit', (req, res) => {
     }
 });
 
+
+// SEARCH YOUTUBE FOR VIDEOS
+// const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk';
+
+techniques.post('/new', (req, res) => {
+
+    // res.send(req.body.search); // logs search term
+    // Set options for API call
+    const options = {
+        url: 'https://www.googleapis.com/youtube/v3/search',
+        method: 'GET',
+        // Query String
+        qs: {
+            part: 'snippet',
+            maxResults: 8,
+            q: req.body.search,
+            key: 'AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk'
+        }
+    }
+
+    request(options, (error, response, body) => {
+        console.log('error', error);
+        console.log('statusCode:', response && response.statusCode);
+        console.log('body', body);
+        const results = JSON.parse(body);
+        res.render('new.ejs', {
+            currentUser: req.session.currentUser,
+            results: results.items // sends array to .ejs
+        });
+    });
+});
+  
 
 // CREATE
 techniques.post('/', (req, res) => {

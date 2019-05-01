@@ -26,11 +26,33 @@
 
         <h2>Search for new techniques</h2>
 
-        <form action="#" id="search-bar">
-            <input type="text" id="search" placeholder="Search Youtube"/>
+        <form action="/techniques/new" method="POST" id="search-bar">
+            <input type="text" id="search" name="search" placeholder="Search Youtube"/>
             <input class="btn" type="submit" value="Search"/>
         </form>
-        <div class="row results"></div>
+
+
+
+        <div id="search-results" class="row results">
+            <% if (results) { %>
+                <% results.forEach((foundVideo) => {%>
+                    <% const title = foundVideo.snippet.title %>
+                    <% const videoId = foundVideo.id.videoId %>
+                    <div class="col s12 m6 l4">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                <img src="https://img.youtube.com/vi/<%= videoId %>/hqdefault.jpg" alt="Youtube video thumbnail">
+                            <div class="card-content">
+                                <h5><%= title %></h5>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <% }) %>
+            
+            <% } %>
+        </div>
     </main>
 </body>
 </html>

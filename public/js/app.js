@@ -116,31 +116,31 @@ const youtubeApiCall = () => {
     const userQuery = $('#search').val();
 
     $.ajax({
-        url: 'https://www.googleapis.com/youtube/v3/search',
+        // url: 'https://www.googleapis.com/youtube/v3/search',
+        url: '/techniques/new',
+        type: 'POST',
         data: {
-            key: youtubeApiKey,
-            maxResults: 8,
-            part: 'snippet',
+            // key: youtubeApiKey,
+            // maxResults: 8,
+            // part: 'snippet',
             q: userQuery
         },
         dataType: 'json',
-        type: 'GET'
-    }).done((data) => {
-        console.log(data.items);
-        renderSearchResults(data.items);
-    }, (error) => {
-        console.log(error);
-    })
+        success: (data) => {
+            console.log(data);
+            // renderSearchResults(data.items);
+        }
+    });
 };
 
 // Document ready function
 $(() => {
     // Search bar in new.ejs to query YouTube API
-    $('#search-bar').on('submit', (e) => {
-        e.preventDefault();
-        youtubeApiCall();
-        $('#search').val('');
-    });
+    // $('#search-bar').on('submit', (e) => {
+    //     e.preventDefault();
+    //     youtubeApiCall();
+    //     $('#search').val('');
+    // });
 
     // Enter new note on technique show.ejs view
     $('#new-note').on('submit', (e) => {
