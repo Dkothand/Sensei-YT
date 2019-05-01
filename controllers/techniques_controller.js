@@ -64,8 +64,6 @@ techniques.get('/:id/edit', (req, res) => {
 
 
 // SEARCH YOUTUBE FOR VIDEOS
-// const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk';
-
 techniques.post('/new', (req, res) => {
 
     // res.send(req.body.search); // logs search term
@@ -76,8 +74,8 @@ techniques.post('/new', (req, res) => {
         // Query String
         qs: {
             part: 'snippet',
-            maxResults: 8,
-            q: req.body.search,
+            maxResults: 12,
+            q: req.body.search || 'bjj techniques',
             key: 'AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk'
         }
     }
