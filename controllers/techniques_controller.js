@@ -108,7 +108,13 @@ techniques.post('/', (req, res) => {
 
 // UPDATE
 techniques.put('/:id', (req, res) => {
-    Technique.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTechnique) => {
+    // Split req.body into individual comments
+    const commentsArray = req.body.notes.split(',');
+    Technique.findByIdAndUpdate(
+        req.params.id,
+        {$set: {notes: commentsArray}},
+        {new: true},
+        (err, updatedTechnique) => {
         if (err) {
             console.log(err)
         }
