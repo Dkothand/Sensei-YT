@@ -10,20 +10,22 @@ sessions.get('/new', (req, res) => {
 
 
 // LOGIN CREATE
-sessions.post('/', (req, res) => {
+sessions.post('/', (req, res, next) => {
     User.findOne({username: req.body.username}, (err, foundUser) => {
-        if (err) {
-            console.log(err);
-        };
-
         if (!foundUser) {
-            res.send('<a href="/">Invalid credentials</a>');
+            // res.send('<a href="/">Invalid credentials</a>');
+            let err = new Error('Invalid credentials');
+            err.statusCode = 401;
+            next(err);
         } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
             console.log(foundUser)
             req.session.currentUser = foundUser;
             res.redirect('/');
         } else {
-            res.send('<a href="/">Invalid credentials</a>');
+            // res.send('<a href="/">Invalid credentials</a>');
+            let err = new Error('Invalid credentials');
+            err.statusCode = 401;
+            next(err);
         }
     })
 });
