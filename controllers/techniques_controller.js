@@ -1,7 +1,6 @@
 const express = require('express');
-
 const request = require('request');
-
+require('dotenv').config();
 const techniques = express.Router();
 const Technique = require('../models/technique.js');
 
@@ -77,7 +76,7 @@ techniques.post('/new', (req, res) => {
             maxResults: 12,
             q: req.body.search || 'bjj techniques',
             type: 'video', // exclude channels and playlists
-            key: 'AIzaSyBLMfcprLCQxeQTD-PAhnmQlI6yCMOnXzk'
+            key: process.env.YOUTUBEAPIKEY
         }
     }
 
