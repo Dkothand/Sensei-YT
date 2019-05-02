@@ -11,8 +11,7 @@ Sensei YouTube is my Unit 2 project for General Assembly's Software Engineering 
 ---
 
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmL-M9-HB7CNqnXdYSbPW8EdVCewJrydzrZrSOZNDhExgZlvGs">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK5gpoI2s0V09id3qeHfC7mwwv46bQQktgN6YW2jWtCWJenUpegQ">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmL-M9-HB7CNqnXdYSbPW8EdVCewJrydzrZrSOZNDhExgZlvGs" width="49%"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK5gpoI2s0V09id3qeHfC7mwwv46bQQktgN6YW2jWtCWJenUpegQ" width="49%">
 
 
 The main technologies used were MongoDB, Express, EJS, and Node.js. I also took advantage of the YouTube Data API v3 to search and obtain data on videos. Styling was done utilizing the Materialize CSS framework in conjunction with a project stylesheet. Finally, the Bcrypt package was used to hash user passwords on account creation.
